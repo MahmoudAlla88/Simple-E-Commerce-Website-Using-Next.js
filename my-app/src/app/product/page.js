@@ -1,28 +1,60 @@
-'use client';  
+// // app/products/page.js
+// import Head from 'next/head';
 
-import Link from 'next/link';
+// async function fetchProducts() {
+//   const res = await fetch('https://fakestoreapi.com/products');
+//   const products = await res.json();
+//   return products;
+// }
+
+// export default async function Products() {
+//   const products = await fetchProducts(); // جلب البيانات من API
+
+//   return (
+//     <div>
+//       <Head>
+//         <title>Our Products</title>
+//         <meta name="description" content="Browse our products" />
+//       </Head>
+//       <h1>Our Products</h1>
+//       <ul>
+//         {products.map((product) => (
+//           <li key={product.id}>
+//             <a href={`/product/${product.id}`}>
+//               <h2>{product.name}</h2>
+//             </a>
+//             <p>{product.price}</p>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+// app/products/page.js
 import Head from 'next/head';
 
-const products = [
-  { id: 1, name: 'Product 1', price: '$10' },
-  { id: 2, name: 'Product 2', price: '$20' },
-  { id: 3, name: 'Product 3', price: '$30' },
-];
+async function fetchProducts() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  const products = await res.json();
+  return products;
+}
 
-export default function Products() {
+export default async function Products() {
+  const products = await fetchProducts(); // جلب البيانات من API
+
   return (
     <div>
       <Head>
-        <title>Products</title>
+        <title>Our Products</title>
         <meta name="description" content="Browse our products" />
       </Head>
       <h1>Our Products</h1>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            <Link href={`/product/${product.id}`}>
-              <h2>{product.name}</h2>
-            </Link>
+            <a href={`/product/${product.id}`}>
+              <h2>{product.title}</h2>
+            </a>
             <p>{product.price}</p>
           </li>
         ))}
