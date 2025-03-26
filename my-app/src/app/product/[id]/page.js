@@ -10,7 +10,7 @@ async function fetchProduct(id) {
 
 export default async function ProductDetail({ params }) {
   const { id } = params;
-  const product = await fetchProduct(id); // جلب البيانات من API
+  const product = await fetchProduct(id); 
 
   return (
     <div>
